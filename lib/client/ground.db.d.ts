@@ -1,34 +1,44 @@
-/**
- * Adds commas to a number
- * @param {number} number
- * @param {string} locale
- * @return {string}
- */
-
 declare module "meteor/ground:db" {
-  interface Ground {
-    Collection: GroundCollection;
-  };
+
+  interface IGroundCollection {
+    observeSource(source: any);
+
+    find(...args);
+
+    findOne(...args);
+
+    insert(...args);
+
+    upsert(selector: any, ...args);
+
+    update(selector: any, ...args);
+
+    remove(selector: any, ...args);
+
+    clear();
+
+    keep(selector: any);
+  }
+
+  class Collection implements IGroundCollection {
+    constructor(name: string, options?: any)
+
+    observeSource(source: any)
+
+    find(...args)
+
+    findOne(...args)
+
+    insert(...args)
+
+    upsert(selector: any, ...args)
+
+    update(selector: any, ...args)
+
+    remove(selector: any, ...args)
+
+    clear()
+
+    keep(selector: any)
+  }
 }
-
-declare class GroundCollection {
-  constructor(name: string, options?: any)
-
-  observeSource(source: any)
-
-  find(...args)
-
-  findOne(...args)
-
-  insert(...args)
-
-  upsert(selector: any, ...args)
-
-  update(selector: any, ...args)
-
-  remove(selector: any, ...args)
-
-  clear()
-
-  keep(selector: any)
-};
